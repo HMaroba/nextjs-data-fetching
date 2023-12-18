@@ -3,6 +3,7 @@
 import React from "react";
 
 import useSWR from "swr";
+import { IUser } from "../page";
 
 // Define the fetcher function
 const fetcher = async (url: string) => {
@@ -40,6 +41,17 @@ export default function Dashboard() {
       <div className="p-10">
         <div className="bg-blue-400 text-white min-h-48">
           <p className="text-2xl font-semibold p-2">Users and Posts Data</p>
+
+          <div className="mt-4 p-6">
+            {userData.map((user: IUser, index: number) => (
+              <div key={index}>
+                <p>{user.name}</p>
+              </div>
+            ))}
+          </div>
+          <div className="p-6">
+          <button className="mt-4 bg-white text-blue-500 rounded-md p-1">Show Data</button>
+          </div>
         </div>
       </div>
     </div>
