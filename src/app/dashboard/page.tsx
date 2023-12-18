@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 
 import useSWR from "swr";
 import { IUser } from "../page";
@@ -12,6 +12,8 @@ const fetcher = async (url: string) => {
 };
 
 export default function Dashboard() {
+  const [showposts, setShowPosts] = useState(false);
+
   // Use the useSWR hook to fetch user data
   const { data: userData, error: userError } = useSWR(
     "https://jsonplaceholder.typicode.com/users",
@@ -36,6 +38,11 @@ export default function Dashboard() {
 
   // Handle error state
   if (userError || postsError) return <div>Failed to load</div>;
+
+  const handleShowData = () => {
+    setShowPosts(!showposts);
+  };
+
   return (
     <div>
       <div className="p-10">
@@ -49,9 +56,26 @@ export default function Dashboard() {
               </div>
             ))}
           </div>
+
           <div className="p-6">
-          <button className="mt-4 bg-white text-blue-500 rounded-md p-1">Show Data</button>
+            <button className="mt-4 bg-white text-blue-500 rounded-md p-1">
+              {showposts ? "Hide Data" : "Show Data"}
+            </button>
           </div>
+
+          {showposts && (
+            <>
+              <div className="mt-4 p-6">
+                {postsData.map((post: any, index: number) => (
+                  <div key={index}>
+                    <p>{post.title}</p>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
+
+     
         </div>
       </div>
     </div>
