@@ -4,6 +4,7 @@ import React, { useState } from "react";
 
 import useSWR from "swr";
 import { IUser } from "../page";
+import Users from "./users/page";
 
 // Define the fetcher function
 const fetcher = async (url: string) => {
@@ -56,9 +57,11 @@ export default function Dashboard() {
 
           <div className="mt-4 p-6">
             <div>
-              <label>Username</label>
+              <label>
+                Username<span className="ml-1 text-red-600">*</span>
+              </label>
               <input
-                className="w-full mb-3 border-2 p-1 rounded-md text-black focus:border-blue-500"
+                className="w-full mb-3 border-2 p-1 rounded-md text-black focus:border-1 focus:border-blue-500"
                 type="text"
                 placeholder="Search user by username"
               />
@@ -69,6 +72,13 @@ export default function Dashboard() {
               </div>
             ))}
           </div>
+
+         <div className="flex space-x-6">
+         <Users />
+         <Users />
+         <Users />
+         <Users />
+         </div>
 
           <div className="p-6">
             <button
