@@ -46,7 +46,7 @@ export default function Dashboard() {
 
   const handleShowMoreData = () => {
     setShowMorePosts(!showmoreposts);
-  }
+  };
 
   return (
     <div>
@@ -55,6 +55,14 @@ export default function Dashboard() {
           <p className="text-2xl font-semibold p-2">Users and Posts Data</p>
 
           <div className="mt-4 p-6">
+            <div>
+              <label>Username</label>
+              <input
+                className="w-full mb-3 border-2 p-1 rounded-md text-black focus:border-blue-500"
+                type="text"
+                placeholder="Search user by username"
+              />
+            </div>
             {userData.map((user: IUser, index: number) => (
               <div key={index}>
                 <p>{user.name}</p>
