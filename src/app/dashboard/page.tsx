@@ -13,6 +13,7 @@ const fetcher = async (url: string) => {
 
 export default function Dashboard() {
   const [showposts, setShowPosts] = useState(false);
+  const [showmoreposts, setShowMorePosts] = useState(false);
 
   // Use the useSWR hook to fetch user data
   const { data: userData, error: userError } = useSWR(
@@ -43,6 +44,10 @@ export default function Dashboard() {
     setShowPosts(!showposts);
   };
 
+  const handleShowMoreData = () => {
+    setShowMorePosts(!showmoreposts);
+  }
+
   return (
     <div>
       <div className="p-10">
@@ -58,7 +63,10 @@ export default function Dashboard() {
           </div>
 
           <div className="p-6">
-            <button className="mt-4 bg-white text-blue-500 rounded-md p-1" onClick={handleShowData}>
+            <button
+              className="mt-4 bg-white text-blue-500 rounded-md p-1"
+              onClick={handleShowData}
+            >
               {showposts ? "Hide Data" : "Show Data"}
             </button>
           </div>
@@ -74,8 +82,6 @@ export default function Dashboard() {
               </div>
             </>
           )}
-
-     
         </div>
       </div>
     </div>
