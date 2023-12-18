@@ -58,7 +58,7 @@ export default function Dashboard() {
           </div>
 
           <div className="p-6">
-            <button className="mt-4 bg-white text-blue-500 rounded-md p-1">
+            <button className="mt-4 bg-white text-blue-500 rounded-md p-1" onClick={handleShowData}>
               {showposts ? "Hide Data" : "Show Data"}
             </button>
           </div>
